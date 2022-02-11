@@ -1,0 +1,7 @@
+var ACTIVITY = {
+	ZERO: 0,
+	INICIO: 1,
+	GERENCIA: 4,
+	VALIDAR:6,
+	FIM: 13
+};

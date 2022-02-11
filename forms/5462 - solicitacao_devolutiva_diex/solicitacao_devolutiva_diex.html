@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Form</title>
+
+	<link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+	<script src="/resources/js/jquery/jquery.js"></script>
+	<script src="/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/resources/js/mustache/mustache-min.js"></script>
+	<script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+	<link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+	<link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+	<script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+	<script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+	<link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/0.css' type='text/css' rel='stylesheet' />
+	<link href='./custom/custom.css' type='text/css' rel='stylesheet' />
+	<script type="text/javascript" src="./custom/activities.js"></script>
+	<script type="text/javascript" src="./custom/custom.js"></script>
+	
+
+
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script> -->
+</head>
+
+
+<body class="fluig-style-guide">
+	<form class="totvs-form grid vertical create-form-components ui-sortable t0" name="createFormComponents"
+		style="padding-left: 10px; padding-right: 10px;">
+		<h1 class="title-form-application">Solicitação de devolutiva</h1>
+		<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="hidden_lista_proximo_usuario">
+			<div class="form-input">
+				<div class="form-group">
+					<input type="text" class="form-control" name="hidden_lista_proximo_usuario" id="hidden_lista_proximo_usuario" placeholder="" data-size="big">
+				</div>
+			</div>
+		</div>
+		<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="hidden_proximo_usuario">
+			<div class="form-input">
+				<div class="form-group">
+					<input type="text" class="form-control" name="hidden_proximo_usuario" id='hidden_proximo_usuario' placeholder="" data-size="big">
+				</div>
+			</div>
+		</div>
+		<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="current_user_name">
+			<div class="form-input">
+				<div class="form-group">
+					<input type="text" class="form-control" name="current_user_name" id='current_user_name' placeholder="" data-size="big">
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-info" id="div_00">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a>Abrir Devolutiva</a>
+				</h3>
+			</div>
+			<div id="abrirDevolutiva" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-field" data-type="zoomfield" data-show-properties=""
+								data-field-name="zfAbrirDevolutiva">
+								<div class="form-input">
+									<div class="">
+										<label for="zoom" class='required'>Pesquise o(s) nome(s) do(s) usuário(s) Responsável(is):</label>
+										<input type="zoom" class="form-control" name="zfAbrirDevolutiva" id='zfAbrirDevolutiva' data-zoom="{
+												'displayKey':'colleagueName',
+												'datasetId':'colleague',
+												'maximumSelectionLength':'10',
+												'placeholder':'Escolha o(s) usuário(s)',
+												'fields':[
+													{
+													   'field':'colleagueName',
+													   'label':'Nome',
+													   'standard':'true'
+													},
+													{
+														'field':'colleagueId',
+														'label':'ID'
+													 }
+		
+												]
+											 }">
+										<input type="hidden" name="hidden_zfAbrirDevolutiva"
+											id="hidden_zfAbrirDevolutiva">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="usuarios_selecionados">
+								<div class="form-input">
+									<div class="">
+										<input type="text" class="form-control" name="usuarios_selecionados" id='usuarios_selecionados' placeholder="" data-size="big" readonly>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-field" data-type="textarea" data-show-properties=""
+								data-field-name="taAbrirDevolutiva">
+								<div class="form-input">
+									<div class="">
+										<label class='required'>Assunto</label>
+										<textarea class="form-control" rows="3" name="taAbrirDevolutiva" placeholder=""
+											data-size="big"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-field" data-type="date" data-show-properties=""
+								data-field-name="dtAbrirDevolutiva">
+								<div class="form-input">
+									<div class="">
+										<label>Prazo</label>
+										<input id="dtAbrirDevolutiva" type="text" class="form-control" name="dtAbrirDevolutiva"
+											data-date="">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-field" data-type="radio" data-show-properties="" data-field-name="rdAbrirDevolutiva" id='rdAbrirDevolutiva'>
+								<div class="form-input">
+									<div class="form-group">
+										<label class='required'>Devolutivas foram aceitas?</label>
+										<div class="radio-options">
+											<div class="radio">
+												<label><input type="radio" name="rdAbrirDevolutiva" value="sim">Sim</label>
+											</div>
+											<div class="radio">
+												<label><input type="radio" name="rdAbrirDevolutiva" value="nao">Não</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-info" id="div_01">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a>Devolutiva</a>
+				</h3>
+			</div>
+			<div id="devolutiva" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-field" data-type="textarea" data-show-properties=""
+								data-field-name="taDevolutiva">
+								<div class="form-input">
+									<div class="form-group">
+										<label class='required'>Escreve a devolutiva:</label>
+										<textarea class="form-control" rows="3" name="taDevolutiva" placeholder=""
+											data-size="big"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-info" id="div_02">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a>Lista de Devolutivas</a>
+				</h3>
+			</div>
+			<div id="listaDevoutivas" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-12" id='appendaqui'>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-field" data-type="textarea" data-show-properties=""
+								data-field-name="taListaDevolutivas">
+								<div class="form-input">
+									<div class="form-group">
+										<textarea class="form-control" rows="3" name="taListaDevolutivas" placeholder=""
+											data-size="big"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+
+</html>
