@@ -19,6 +19,9 @@ function carregaTabelas(){
             wdkAddChild('tbDevolutivas')
             $('[name="column1_1___'+(i+1)+'"]').text(i+1)
             $('[name="column2_1___'+(i+1)+'"]').text(dataset[i].taAbrirDevolutiva)
+            $('[name="column3_1___'+(i+1)+'"]').text(dataset[i].dtAbrirDevolutiva)
+            $('[name="column4_1___'+(i+1)+'"]').text(dataset[i].ipCadastro)
+            $('[name="column5_1___'+(i+1)+'"]').text(dataset[i].ipSituacao)
             $('[name="column6_1___'+(i+1)+'"]').text(dataset[i].current_user_name)
             $('#column7_1___'+(i+1)).prop('href','https://fluighom.sestsenat.org.br/portal/p/1/ecmnavigation?app_ecm_navigation_doc='+dataset[i].documentid)
         }

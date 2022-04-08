@@ -1,14 +1,18 @@
 function beforeTaskSave(colleagueId,nextSequenceId,userList){
-    
-    
     log.info("## PROCESSO DEVOLUTIVA 1 ##")
-    if (getValue("WKNumState")==4){
+    
+    var activity = getValue("WKNumState")
+    var cardNProcesso = hAPI.getCardValue("ipNumForm");
+
+    if (cardNProcesso==null||cardNProcesso==''){
+        hAPI.setCardValue("ipNumForm", getValue("WKNumProces"))
+    }
+
+    if (activity==4){
         var devolutiva = hAPI.getCardValue("taDevolutiva");
         var taListaDevolutivas = hAPI.getCardValue("taListaDevolutivas");
         var user = hAPI.getCardValue("current_user_name");
-        log.info(devolutiva)
-        log.info(taListaDevolutivas)
-        log.info(user)
+
         if (taListaDevolutivas && taListaDevolutivas!="" && taListaDevolutivas != undefined){
             taListaDevolutivas=taListaDevolutivas+"<br><br><h4>"+user+"</h4><i>"+devolutiva+"</i>"
         } else {
@@ -19,6 +23,9 @@ function beforeTaskSave(colleagueId,nextSequenceId,userList){
         hAPI.setCardValue("taListaDevolutivas", taListaDevolutivas)
     }
 
+    if (nextSequenceId==4){
+        hAPI.setCardValue("current_user_name", userList.toString())
+    }
 
     log.info("## FIM PD 1 ##")
 }

@@ -1,5 +1,14 @@
 $(document).ready(function () {
     init();
+    
+    var mySimpleCalendar = FLUIGC.calendar('#dtAbrirDevolutiva',{
+        useCurrent: true,
+        language: 'pt-br',
+        pickDate: true,
+    });
+    dataAtual = new Date()
+    mySimpleCalendar.setDate(dataAtual);
+
 });
 
 function init(){
