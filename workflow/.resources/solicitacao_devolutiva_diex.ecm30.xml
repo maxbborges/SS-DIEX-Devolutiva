@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>solicitacao_devolutiva_diex</processId>
-      <version>42</version>
+      <version>54</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5462</formId>
@@ -162,8 +162,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SECRETARIA_EXECUTIVA_DIEX&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;DIEX&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>false</notifyAuthorityDelay>
@@ -289,7 +289,7 @@
       <frequenceManagerTime>0</frequenceManagerTime>
       <inhibitTransfer>false</inhibitTransfer>
       <periodId></periodId>
-      <stateType>0</stateType>
+      <stateType>6</stateType>
       <bpmnType>60</bpmnType>
       <signalId>0</signalId>
       <counterSign>false</counterSign>
@@ -304,7 +304,7 @@
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>1</expressionOrder>
-        <version>42</version>
+        <version>54</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -316,7 +316,7 @@
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>2</expressionOrder>
-        <version>42</version>
+        <version>54</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -330,26 +330,27 @@
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>1</expressionOrder>
-        <version>42</version>
+        <version>54</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
-      <condition>false</condition>
-      <destinationSequenceId>4</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;hidden_proximo_usuario&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <engineAllocationId>Campo Formulário</engineAllocationId>
-      <conditionType>1</conditionType>
+      <condition>hAPI.getCardValue(&quot;hidden_proximo_usuario&quot;) == &quot;&quot;</condition>
+      <destinationSequenceId>6</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;DIEX&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>2</expressionOrder>
-        <version>42</version>
+        <version>54</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
-      <condition>false</condition>
-      <destinationSequenceId>6</destinationSequenceId>
-      <conditionType>1</conditionType>
+      <condition>true</condition>
+      <destinationSequenceId>4</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;hidden_proximo_usuario&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
   <list>
@@ -492,26 +493,13 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeTaskComplete(colleagueId,nextSequenceId,userList){&#xd;
-	log.info(&quot;## PROCESSO DEVOLUTIVA ##&quot;)&#xd;
-	var activity = getValue(&quot;WKNumState&quot;)&#xd;
-	if(activity!=8){&#xd;
-		var lista_proximo_usuario = hAPI.getCardValue(&quot;hidden_lista_proximo_usuario&quot;);&#xd;
-		var proximo_usuario = hAPI.getCardValue(&quot;hidden_proximo_usuario&quot;);&#xd;
-		&#xd;
-		lista_proximo_usuario=lista_proximo_usuario.replace(proximo_usuario+&apos;,&apos;,&apos;&apos;)&#xd;
-		lista_proximo_usuario=lista_proximo_usuario.replace(proximo_usuario,&apos;&apos;)&#xd;
-	&#xd;
-		hAPI.setCardValue(&quot;hidden_lista_proximo_usuario&quot;, lista_proximo_usuario)&#xd;
-	&#xd;
-		var arrayProximo =lista_proximo_usuario.split(&apos;,&apos;)&#xd;
-		hAPI.setCardValue(&quot;hidden_proximo_usuario&quot;, arrayProximo[0])&#xd;
-	}&#xd;
+	log.info(&quot;## PROCESSO DEVOLUTIVA BTC ##&quot;)&#xd;
 &#xd;
 	if (nextSequenceId==6){&#xd;
 		hAPI.setCardValue(&quot;current_user_name&quot;, &apos;&apos;)&#xd;
 		hAPI.setCardValue(&quot;ipSituacao&quot;, &apos;Validar&apos;)&#xd;
 	}&#xd;
-	&#xd;
+&#xd;
 	if (nextSequenceId==13){&#xd;
 		hAPI.setCardValue(&quot;ipSituacao&quot;, &apos;Finalizada&apos;)&#xd;
 	}&#xd;
@@ -519,10 +507,8 @@
 	if (nextSequenceId==4){&#xd;
 		hAPI.setCardValue(&quot;ipSituacao&quot;, &apos;Aguardando Respostas&apos;)&#xd;
 	}&#xd;
-	log.info(&quot;COMPETE:&quot;)&#xd;
-	log.info(colleagueId)&#xd;
-	log.info(userList)&#xd;
-	log.info(&quot;## FIM PD##&quot;)&#xd;
+&#xd;
+	log.info(&quot;## PROCESSO DEVOLUTIVA BTC ##&quot;)&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -533,35 +519,16 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){&#xd;
-    log.info(&quot;## PROCESSO DEVOLUTIVA 1 ##&quot;)&#xd;
+    log.info(&quot;## PROCESSO DEVOLUTIVA BTS ##&quot;)&#xd;
     &#xd;
-    var activity = getValue(&quot;WKNumState&quot;)&#xd;
+    // var activity = getValue(&quot;WKNumState&quot;)&#xd;
     var cardNProcesso = hAPI.getCardValue(&quot;ipNumForm&quot;);&#xd;
 &#xd;
     if (cardNProcesso==null||cardNProcesso==&apos;&apos;){&#xd;
         hAPI.setCardValue(&quot;ipNumForm&quot;, getValue(&quot;WKNumProces&quot;))&#xd;
     }&#xd;
 &#xd;
-    if (activity==4){&#xd;
-        var devolutiva = hAPI.getCardValue(&quot;taDevolutiva&quot;);&#xd;
-        var taListaDevolutivas = hAPI.getCardValue(&quot;taListaDevolutivas&quot;);&#xd;
-        var user = hAPI.getCardValue(&quot;current_user_name&quot;);&#xd;
-&#xd;
-        if (taListaDevolutivas &amp;&amp; taListaDevolutivas!=&quot;&quot; &amp;&amp; taListaDevolutivas != undefined){&#xd;
-            taListaDevolutivas=taListaDevolutivas+&quot;&lt;br&gt;&lt;br&gt;&lt;h4&gt;&quot;+user+&quot;&lt;/h4&gt;&lt;i&gt;&quot;+devolutiva+&quot;&lt;/i&gt;&quot;&#xd;
-        } else {&#xd;
-            taListaDevolutivas=&quot;&lt;h4&gt;&quot;+user+&quot;&lt;/h4&gt;&lt;br&gt;&lt;i&gt;&quot;+devolutiva+&quot;&lt;/i&gt;&quot;&#xd;
-        }&#xd;
-&#xd;
-        hAPI.setCardValue(&quot;taDevolutiva&quot;, &apos;&apos;)&#xd;
-        hAPI.setCardValue(&quot;taListaDevolutivas&quot;, taListaDevolutivas)&#xd;
-    }&#xd;
-&#xd;
-    if (nextSequenceId==4){&#xd;
-        hAPI.setCardValue(&quot;current_user_name&quot;, userList.toString())&#xd;
-    }&#xd;
-&#xd;
-    log.info(&quot;## FIM PD 1 ##&quot;)&#xd;
+    log.info(&quot;## FIM PROCESSO DEVOLUTIVA BTS ##&quot;)&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -607,7 +574,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
-        <version>42</version>
+        <version>54</version>
         <linkSequence>12</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -618,7 +585,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
-        <version>42</version>
+        <version>54</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -629,7 +596,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
-        <version>42</version>
+        <version>54</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -660,24 +627,6 @@
       <ruleOrder>1</ruleOrder>
       <field>rdAbrirDevolutiva</field>
       <value>nao</value>
-      <operator>1</operator>
-      <valueType>1</valueType>
-    </ConditionProcessAutomaticRules>
-    <ConditionProcessAutomaticRules>
-      <sequence>15</sequence>
-      <expressionOrder>1</expressionOrder>
-      <ruleOrder>1</ruleOrder>
-      <field>hidden_proximo_usuario</field>
-      <value></value>
-      <operator>2</operator>
-      <valueType>1</valueType>
-    </ConditionProcessAutomaticRules>
-    <ConditionProcessAutomaticRules>
-      <sequence>15</sequence>
-      <expressionOrder>2</expressionOrder>
-      <ruleOrder>1</ruleOrder>
-      <field>hidden_proximo_usuario</field>
-      <value></value>
       <operator>1</operator>
       <valueType>1</valueType>
     </ConditionProcessAutomaticRules>

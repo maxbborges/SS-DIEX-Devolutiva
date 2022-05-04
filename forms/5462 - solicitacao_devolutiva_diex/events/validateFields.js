@@ -1,30 +1,39 @@
 function validateForm(form) {
   var wkactivity = getValue('WKNumState');
-  if (wkactivity==0 || wkactivity==1 || wkactivity==3){
+  // ABERTURA
+  if (wkactivity==ACTIVITY.ZERO || wkactivity==ACTIVITY.INICIO){
     if (form.getValue('zfAbrirDevolutiva') == null || form.getValue('zfAbrirDevolutiva') == ""){
-      exibirMensagem("Necessário preencher o usuários para abertura!")
+      exibirMensagem("Necessário preencher o(s) usuário(s) para abertura!")
     }
     if (form.getValue('taAbrirDevolutiva') == null || form.getValue('taAbrirDevolutiva') == ""){
       exibirMensagem("Necessário preencher o assunto para abertura!")
     }
-    // if (form.getValue('dtAbrirDevolutiva') == null || form.getValue('dtAbrirDevolutiva') == ""){
-    //   exibirMensagem(forn,"erro!")
-    // } 
+    if (form.getValue('hidden_proximo_usuario') == null || form.getValue('hidden_proximo_usuario') == ""){
+      exibirMensagem("Necessário selecionar ao menos um usuário para encaminhamento!")
+    }
   }
 
-  if (wkactivity==4){
+  // DEVOLUTIVA
+  if (wkactivity==ACTIVITY.GERENCIA){
     if (form.getValue('taDevolutiva') == null || form.getValue('taDevolutiva') == ""){
       exibirMensagem("Necessário preencher o resposta da devolutiva!")
+    }
+    if (form.getValue('validarDevolutiva') == null || form.getValue('validarDevolutiva') == ""){
+      exibirMensagem("Necessário INCLUIR a devolutiva!")
     } 
   }
 
   if (wkactivity==6){
-    // if ($('[name="rdAbrirDevolutiva"]:checked').val())
-    if (form.getValue('rdAbrirDevolutiva') == null || form.getValue('rdAbrirDevolutiva') == ""){
+    if ((form.getValue('rdAbrirDevolutiva') == null || form.getValue('rdAbrirDevolutiva') == "")){
       exibirMensagem("Necessário preencher se as devolutivas foram aceitas!")
     }
-    if (form.getValue('taAbrirDevolutiva') == null || form.getValue('taAbrirDevolutiva') == ""){
-      exibirMensagem("Necessário preencher o assunto para abertura!")
+    if (form.getValue('rdAbrirDevolutiva')=='nao'){
+      if (form.getValue('hidden_proximo_usuario') == null || form.getValue('hidden_proximo_usuario') == ""){
+        exibirMensagem("Necessário selecionar ao menos um usuário para encaminhamento!")
+      }
+      if (form.getValue('taAbrirDevolutiva') == null || form.getValue('taAbrirDevolutiva') == ""){
+        exibirMensagem("Necessário preencher o assunto para abertura!")
+      }
     }
   }
 }

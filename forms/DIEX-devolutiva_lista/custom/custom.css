@@ -13,3 +13,11 @@
 .panel.panel-info{
     border-color: #002060;
 }
+
+/* #Devolutivas .filtros{
+    text-align: center;
+} */
+
+#Devolutivas .filtros{
+    margin-bottom: 15px;
+} 

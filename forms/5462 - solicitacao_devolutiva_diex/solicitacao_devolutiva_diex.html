@@ -39,15 +39,28 @@
 		style="padding-left: 10px; padding-right: 10px;">
 		<h1 class="title-form-application">Solicitação de devolutiva</h1>
 		<div class="form-group">
-			<input type="hidden" class="form-control" name="hidden_lista_proximo_usuario"
-				id="hidden_lista_proximo_usuario" placeholder="" data-size="big">
-			<input type="hidden" class="form-control" name="hidden_proximo_usuario" id='hidden_proximo_usuario'
-				placeholder="" data-size="big">
-			<input type="hidden" class="form-control" name="current_user_name" id='current_user_name' placeholder=""
-				data-size="big">
-			<input type="hidden" class="form-control" name="ipCadastro" value="" placeholder="" data-size="big">
-			<input type="hidden" class="form-control" name="ipSituacao" value="" placeholder="" data-size="big">
-			<input type="hidden" class="form-control" name="ipNumForm" value="" placeholder="" data-size="big">
+			<table tablename="tbl_pessoas" class="table" name="tbl_pessoas" noaddbutton="true" nodeletebutton="true">
+				<thead>
+					<tr class="tableHeadRow">
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="tableBodyRow form-input">
+						<td class="fs-v-align-middle">
+							<input type="text" name="matricula" class="form-control" readonly>
+						</td>
+						<td class="fs-v-align-middle">
+							<input type="text" name="nome" class="form-control" readonly>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="hidden" class="form-control" name="hidden_proximo_usuario" id='hidden_proximo_usuario' readonly>
+			<input type="hidden" class="form-control" name="current_user_name" id='current_user_name' readonly>
+			<input type="hidden" class="form-control" name="ipCadastro" data-size="big" readonly>
+			<input type="hidden" class="form-control" name="ipSituacao" data-size="big" readonly>
+			<input type="hidden" class="form-control" name="ipNumForm" data-size="big" readonly>
+			<input type="hidden" class="form-control" name="validarDevolutiva" id="validarDevolutiva" data-size="big" readonly>
 		</div>
 		<div class="panel panel-info" id="div_00">
 			<div class="panel-heading">
@@ -58,86 +71,46 @@
 			<div id="abrirDevolutiva" class="panel-collapse collapse in">
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-field" data-type="zoomfield" data-show-properties=""
-								data-field-name="zfAbrirDevolutiva">
-								<div class="form-input">
-									<div class="">
-										<label for="zoom" class='required'>Pesquise o(s) nome(s) do(s) usuário(s)
-											Responsável(is):</label>
-										<input type="zoom" class="form-control" name="zfAbrirDevolutiva"
-											id='zfAbrirDevolutiva' data-zoom="{
-												'displayKey':'colleagueName',
-												'datasetId':'colleague',
-												'maximumSelectionLength':'10',
-												'placeholder':'Escolha o(s) usuário(s)',
-												'fields':[
-													{
-													   'field':'colleagueName',
-													   'label':'Nome',
-													   'standard':'true'
-													},
-													{
-														'field':'colleagueId',
-														'label':'ID'
-													 }
-		
-												]
-											 }">
-										<input type="hidden" name="hidden_zfAbrirDevolutiva"
-											id="hidden_zfAbrirDevolutiva">
-									</div>
-								</div>
-							</div>
+						<div class="col-sm-9 form-group">
+							<label for="zoom" class='required'>Pesquise o(s) nome(s) do(s) usuário(s)
+								Responsável(is):</label>
+							<input type="zoom" class="form-control" name="zfAbrirDevolutiva" id='zfAbrirDevolutiva'
+								data-zoom="{
+									'displayKey':'colleagueName',
+									'datasetId':'colleague',
+									'maximumSelectionLength':'10',
+									'placeholder':'Escolha o(s) usuário(s)',
+									'fields':[{
+										'field':'colleagueName',
+										'label':'Nome',
+										'standard':'true'
+									},
+									{
+										'field':'colleagueId',
+										'label':'ID'
+									}]
+								}">
+							<!-- <input type="hidden" name="hidden_zfAbrirDevolutiva" id="hidden_zfAbrirDevolutiva"> -->
+							
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-field" data-type="textbox" data-show-properties=""
-								data-field-name="usuarios_selecionados">
-								<div class="form-input">
-									<div class="">
-										<input type="text" class="form-control" name="usuarios_selecionados"
-											id='usuarios_selecionados' placeholder="" data-size="big" readonly>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-field" data-type="textarea" data-show-properties=""
-								data-field-name="taAbrirDevolutiva">
-								<div class="form-input">
-									<div class="">
-										<label class='required'>Assunto</label>
-										<textarea class="form-control" rows="3" name="taAbrirDevolutiva" placeholder=""
-											data-size="big"></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 							<label>Prazo</label>
-							<input id="dtAbrirDevolutiva" type="text" class="form-control" name="dtAbrirDevolutiva" id="dtAbrirDevolutiva"
-								data-date="">
+							<input id="dtAbrirDevolutiva" type="text" class="form-control" name="dtAbrirDevolutiva"
+								id="dtAbrirDevolutiva" data-date="">
 						</div>
-						<div class="col-sm-6">
-							<div class="form-field" data-type="radio" data-show-properties=""
-								data-field-name="rdAbrirDevolutiva" id='rdAbrirDevolutiva'>
-								<label class='required'>Devolutivas foram aceitas?</label>
-								<div class="radio-options">
-									<div class="radio">
-										<label><input type="radio" name="rdAbrirDevolutiva" value="sim">Sim</label>
-									</div>
-									<div class="radio">
-										<label><input type="radio" name="rdAbrirDevolutiva" value="nao">Não</label>
-									</div>
-								</div>
-							</div>
+					</div>
+					<!-- <div class="row">
+						<div class="col-sm-12 form-input">
+							<input type="text" class="form-control" name="usuarios_selecionados"
+								id='usuarios_selecionados' readonly>
 						</div>
+					</div> -->
+					<div class="row form-group">
+						<div class="col-sm-12">
+							<label class='required'>Assunto</label>
+							<textarea class="form-control" rows="3" name="taAbrirDevolutiva"></textarea>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -151,17 +124,14 @@
 			<div id="devolutiva" class="panel-collapse collapse in">
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-field" data-type="textarea" data-show-properties=""
-								data-field-name="taDevolutiva">
-								<div class="form-input">
-									<div class="form-group">
-										<label class='required'>Escreve a devolutiva:</label>
-										<textarea class="form-control" rows="3" name="taDevolutiva" placeholder=""
-											data-size="big"></textarea>
-									</div>
-								</div>
-							</div>
+						<div class="col-sm-12 form-input">
+							<label class='required'>Escreve a devolutiva:</label>
+							<textarea class="form-control" rows="3" name="taDevolutiva" data-size="big"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 btn_incluir_01">
+							<button type="button" class="btn btn-secundary" id="btn_incluir_01" onclick="addItemTabela()">Incluir</button>
 						</div>
 					</div>
 				</div>
@@ -176,19 +146,48 @@
 			<div id="listaDevoutivas" class="panel-collapse collapse in">
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-sm-12" id='appendaqui'>
-
+						<div class="col-sm-12">
+							<table tablename="tbl_devolutivas" class="table" noaddbutton="true" nodeletebutton="true">
+								<thead>
+									<tr class="tableHeadRow">
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="tableBodyRow form-group row">
+										<td class="col-sm-4">
+											<label>Gerente:</label>
+											<textarea type="text" rows="3" name="reponsavel" class="form-control" readonly></textarea>
+										</td>
+										<td class="col-sm-8">
+											<label>Devolutiva:</label>
+											<textarea class="form-control" rows="3" name="taListaDevolutivas"
+												readonly></textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-info" id="div_03">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a>Validar Devolutivas</a>
+				</h3>
+			</div>
+			<div class="panel-collapse collapse in">
+				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="form-field" data-type="textarea" data-show-properties=""
-								data-field-name="taListaDevolutivas">
-								<div class="form-input">
-									<div class="form-group">
-										<textarea class="form-control" rows="3" name="taListaDevolutivas" placeholder=""
-											data-size="big"></textarea>
-									</div>
+							<label class='required'>Devolutivas foram aceitas?</label>
+							<div class="radio-options">
+								<div class="radio">
+									<label><input type="radio" name="rdAbrirDevolutiva" value="sim">Sim</label>
+								</div>
+								<div class="radio">
+									<label><input type="radio" name="rdAbrirDevolutiva" value="nao">Não</label>
 								</div>
 							</div>
 						</div>

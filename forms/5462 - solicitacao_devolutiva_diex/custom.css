@@ -14,3 +14,13 @@ form label.required:after{
     color: #FF0000;
     content: " *";
 }
+
+.btn_incluir_01 {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btn_incluir_01 button.btn.btn-secundary {
+    background: #002060;
+    color: white;
+}

@@ -1,7 +1,8 @@
 var ACTIVITY = {
 	ZERO: 0,
-	INICIO: 1,
+	INICIO: 3,
 	GERENCIA: 4,
 	VALIDAR:6,
-	FIM: 13
+	FIM: 13,
+	DECISAO:15
 };

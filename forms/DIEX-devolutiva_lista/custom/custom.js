@@ -3,21 +3,49 @@ $(document).ready(function () {
 });
 
 function init(){
-    carregaTabelas()
+    if(FORM_MODE == "VIEW"){
+        carregaTabelas()
+    }
+    
     console.log("OK")
 }
 
 function carregaTabelas(){
-    let dataset = (DatasetFactory.getDataset("DSsolicitacao_devolutiva_diex", null, null, null)).values
+    filtroNome=$('[name="filtroNomes"]').text()
+    filtroData=$('[name="filtroData"]').text()
+    filtroStatus=$('[name="filtroStatus"]').text()
+    let constraints=[]
+
+    console.log(filtroData)
+    console.log(filtroNome)
+
+
+    if (filtroNome!='' && filtroNome!=null && filtroNome!='\xa0' && filtroNome!='Selecione um nome'){
+        constraints.push(DatasetFactory.createConstraint("current_user_name", filtroNome, filtroNome, ConstraintType.MUST))
+    }
+    if (filtroData!='' && filtroData!=null  && filtroData!='\xa0'){
+        constraints.push(DatasetFactory.createConstraint("dtAbrirDevolutiva", filtroData, filtroData, ConstraintType.MUST))
+    }
+
+    if (filtroStatus!='' && filtroStatus!=null  && filtroStatus!='\xa0' && filtroStatus!='Selecione um status'){
+        constraints.push(DatasetFactory.createConstraint("ipSituacao", filtroStatus, filtroStatus, ConstraintType.MUST))
+    }
+    console.log(constraints)
+
+    let dataset = (DatasetFactory.getDataset("DSsolicitacao_devolutiva_diex", null, constraints, null)).values
 
     setTimeout(()=>{
         var linhasTabela = $('.table tbody tr');
-        console.log(linhasTabela)
+        if (dataset.length==0){
+            FLUIGC.toast({
+                title: '',
+                message: 'Nenhuma devolutiva encontrada',
+                type: 'danger'
+            });
+        }
 
         for(i=0;i<dataset.length;i++){
-            console.log(dataset[i])
             wdkAddChild('tbDevolutivas')
-            $('[name="column1_1___'+(i+1)+'"]').text(i+1)
             $('[name="column2_1___'+(i+1)+'"]').text(dataset[i].taAbrirDevolutiva)
             $('[name="column3_1___'+(i+1)+'"]').text(dataset[i].dtAbrirDevolutiva)
             $('[name="column4_1___'+(i+1)+'"]').text(dataset[i].ipCadastro)

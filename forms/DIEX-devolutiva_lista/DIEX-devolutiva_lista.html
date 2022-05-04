@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
 	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
 	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
@@ -33,7 +33,7 @@
 <body class="fluig-style-guide">
 	<form class="totvs-form grid vertical create-form-components ui-sortable t0" name="createFormComponents"
 		style="padding-left: 10px; padding-right: 10px;">
-		<h1 class="title-form-application">Devolutivas</h1>
+		<!-- <h1 class="title-form-application">Devolutivas</h1> -->
 		<div class="panel panel-info" id="div_00">
 			<div class="panel-heading">
 				<h3 class="panel-title">
@@ -44,73 +44,68 @@
 			<div id="Devolutivas" class="panel-collapse collapse in">
 				<!-- trocar o ID -->
 				<div class="panel-body">
+					<div class="row filtros">
+						<div class="col-sm-6 form-input">
+							<select class="form-control" name="filtroNomes">
+								<option value="">Selecione um nome</option>
+								<option value="Maxwell Borges Bezerra">Maxwell Borges Bezerra</option>
+							</select>
+						</div>
+						<div class="col-sm-3 form-input">
+							<input type="text" name="filtroData" class="form-control" placeholder="Digite a data">
+						</div>
+						<div class="col-sm-3 form-input">
+							<select class="form-control" name="filtroStatus">
+								<option value="">Selecione um status</option>
+								<option value="Novo">Novo</option>
+								<option value="Aguardando Respostas">Aguardando Respostas</option>
+								<option value="Validar">Validar</option>
+								<option value="Finalizada">Finalizada</option>
+							</select>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="form-field" data-type="tabledetail" data-show-properties=""
-								data-field-name="tbDevolutivas_div">
-								<div class="form-input">
-									<div class="form-group">
-										<table tablename="tbDevolutivas" class="table" noaddbutton="true">
-											<thead>
-												<tr class="tableHeadRow">
-													<th class="tableColumn">Numero</th>
-													<th class="tableColumn">Assunto</th>
-													<th class="tableColumn">Prazo</th>
-													<th class="tableColumn">Cadastro</th>
-													<th class="tableColumn">Situação</th>
-													<th class="tableColumn">Usuário</th>
-													<th class="tableColumn">Links</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr class="tableBodyRow">
-													<td class="fs-v-align-middle">
-														<div class="form-input">
-															<input type="text" name="column1_1" class="form-control">
-														</div>
-													</td>
-													<td class="fs-v-align-middle">
-														<div class="form-input">
-															<input type="text" name="column2_1" class="form-control">
-														</div>
-													</td>
-													<td class="fs-v-align-middle">
-														<div class="form-input">
-															<input type="text" name="column3_1" class="form-control">
-														</div>
-													</td>
-													<td class="fs-v-align-middle">
-														<div class="form-input">
-															<input type="text" name="column4_1" class="form-control">
-														</div>
-													</td>
-													<td class="fs-v-align-middle">
-														<div class="form-input">
-															<input type="text" name="column5_1" class="form-control">
-														</div>
-													</td>
-													<td class="fs-v-align-middle">
-														<div class="form-input">
-															<input type="text" name="column6_1" class="form-control">
-														</div>
-													</td>
-													<td class="fs-v-align-middle">
-														<a target="_blank" name="column7_1">
-															<button type="button" class="btn btn-primary">Formulário</button>
-														</a>
-														<a target="_blank" name="column8_1">
-															<button type="button" class="btn btn-primary">Solicitação</button>
-														</a>
-														
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<button type="button" class="btn btn-primary" onclick="wdkAddChild('tbDevolutivas')">Novo
-											Registro</button>
-									</div>
-								</div>
-							</div>
+							<table tablename="tbDevolutivas" class="table" noaddbutton="true" nodeletebutton="true">
+								<thead>
+									<tr class="tableHeadRow">
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="tableBodyRow form-group row">
+										<td class="col-sm-7">
+											<label>Assunto</label>
+											<input type="text" name="column2_1" class="form-control">
+										</td>
+										<td class="col-sm-1">
+											<label>Prazo</label>
+											<input type="text" name="column3_1" class="form-control">
+										</td>
+										<td class="col-sm-1">
+											<label>Cadastro</label>
+											<input type="text" name="column4_1" class="form-control">
+										</td>
+										<td class="col-sm-1">
+											<label>Situação</label>
+											<input type="text" name="column5_1" class="form-control">
+										</td>
+										<td class="col-sm-1">
+											<label>Usuário</label>
+											<input type="text" name="column6_1" class="form-control">
+										</td>
+										<td class="col-sm-1">
+											<label>Links</label>
+											<a target="_blank" name="column7_1">
+												<button type="button" class="btn btn-info">Formulário</button>
+											</a>
+											<a target="_blank" name="column8_1">
+												<button type="button" class="btn btn-info">Solicitação</button>
+											</a>
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
