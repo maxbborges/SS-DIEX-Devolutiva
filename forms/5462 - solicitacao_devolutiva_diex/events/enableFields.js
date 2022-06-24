@@ -1,6 +1,9 @@
 function enableFields(form) {
     atividade = getValue("WKNumState")
     if (atividade==ACTIVITY.ZERO||atividade==ACTIVITY.INICIO||atividade==ACTIVITY.VALIDAR){
+        if (atividade==ACTIVITY.VALIDAR){
+            form.setEnabled('taAbrirDevolutiva', false);
+        }
     } else {
         divs = DIV_00
         for (i=0;i<divs.length;i++){

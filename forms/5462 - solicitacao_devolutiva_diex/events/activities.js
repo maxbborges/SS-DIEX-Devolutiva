@@ -31,5 +31,6 @@ var DIV_02=[
 ]
 
 var DIV_03=[
-    "rdAbrirDevolutiva"
+    "rdAbrirDevolutiva",
+    "atxt_validarDevolutivas"
 ]

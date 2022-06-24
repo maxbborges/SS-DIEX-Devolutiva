@@ -61,13 +61,14 @@ function addItemTabela(){
 
     wdkAddChild('tbl_devolutivas')
     $('[name="reponsavel___'+newId+'"]').val(USUARIO)
+    $('[name="txt_dataInclusao___'+newId+'"]').val(new Date())
     $('[name="taListaDevolutivas___'+newId+'"]').val($('[name="taDevolutiva"]').val())
     $('#validarDevolutiva').val('True')
 
     FLUIGC.toast({
         title: '',
         message: 'Texto Salvo, enviar para proxima etapa!',
-        type: 'danger'
+        type: 'success'
     });
 }
 
@@ -88,8 +89,8 @@ function habilitar_onchange(){
 
 function setSelectedZoomItem(selectedItem) {
     wdkAddChild('tbl_pessoas')
-    $('#nome___'+newId).val(selectedItem.colleagueName)
-    $('#matricula___'+newId).val(selectedItem.colleagueId)
+    $('#nome___'+newId).val(selectedItem.fullName)
+    $('#matricula___'+newId).val(selectedItem.code)
     $('#hidden_proximo_usuario').val($($('[tablename="tbl_pessoas"] input')[2]).val())
     $('#current_user_name').val($($('[tablename="tbl_pessoas"] input')[3]).val())
 }
@@ -97,7 +98,7 @@ function setSelectedZoomItem(selectedItem) {
 function removedZoomItem(removedItem) {
     var lista_proximo_usuario = $('[tablename="tbl_pessoas"] input')
     for (var i=2; i<lista_proximo_usuario.length;i++){
-        if ($(lista_proximo_usuario[i]).val()==removedItem.colleagueId){
+        if ($(lista_proximo_usuario[i]).val()==removedItem.code){
             if (i==2){
                 $('#hidden_proximo_usuario').val($(lista_proximo_usuario[4]).val())
                 $('#current_user_name').val($(lista_proximo_usuario[5]).val())

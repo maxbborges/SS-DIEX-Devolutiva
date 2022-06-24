@@ -55,12 +55,14 @@
 					</tr>
 				</tbody>
 			</table>
-			<input type="hidden" class="form-control" name="hidden_proximo_usuario" id='hidden_proximo_usuario' readonly>
+			<input type="hidden" class="form-control" name="hidden_proximo_usuario" id='hidden_proximo_usuario'
+				readonly>
 			<input type="hidden" class="form-control" name="current_user_name" id='current_user_name' readonly>
 			<input type="hidden" class="form-control" name="ipCadastro" data-size="big" readonly>
 			<input type="hidden" class="form-control" name="ipSituacao" data-size="big" readonly>
 			<input type="hidden" class="form-control" name="ipNumForm" data-size="big" readonly>
-			<input type="hidden" class="form-control" name="validarDevolutiva" id="validarDevolutiva" data-size="big" readonly>
+			<input type="hidden" class="form-control" name="validarDevolutiva" id="validarDevolutiva" data-size="big"
+				readonly>
 		</div>
 		<div class="panel panel-info" id="div_00">
 			<div class="panel-heading">
@@ -76,7 +78,27 @@
 								Responsável(is):</label>
 							<input type="zoom" class="form-control" name="zfAbrirDevolutiva" id='zfAbrirDevolutiva'
 								data-zoom="{
-									'displayKey':'colleagueName',
+									'displayKey':'fullName',
+									'datasetId':'fluig_consulta_usuariosDoGrupo',
+									'maximumSelectionLength':'10',
+									'placeholder':'Escolha o(s) usuário(s)',
+									'filterValues':'cdGrupo,_DGEA',
+									'fields':[{
+										'field':'fullName',
+										'label':'Nome',
+										'standard':'true',
+										'visible':'true'
+									},{
+										'field':'email',
+										'label':'E-mail',
+										'visible':'true'
+									},{
+										'field':'code',
+										'label':'codigo',
+										'visible':'false'
+									}]
+								}">
+								<!-- 'displayKey':'colleagueName',
 									'datasetId':'colleague',
 									'maximumSelectionLength':'10',
 									'placeholder':'Escolha o(s) usuário(s)',
@@ -88,10 +110,9 @@
 									{
 										'field':'colleagueId',
 										'label':'ID'
-									}]
-								}">
+									}] -->
 							<!-- <input type="hidden" name="hidden_zfAbrirDevolutiva" id="hidden_zfAbrirDevolutiva"> -->
-							
+
 						</div>
 						<div class="col-sm-3">
 							<label>Prazo</label>
@@ -131,7 +152,8 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-12 btn_incluir_01">
-							<button type="button" class="btn btn-secundary" id="btn_incluir_01" onclick="addItemTabela()">Incluir</button>
+							<button type="button" class="btn btn-secundary" id="btn_incluir_01"
+								onclick="addItemTabela()">Incluir</button>
 						</div>
 					</div>
 				</div>
@@ -154,9 +176,15 @@
 								</thead>
 								<tbody>
 									<tr class="tableBodyRow form-group row">
-										<td class="col-sm-4">
+										<td class="col-sm-2">
 											<label>Gerente:</label>
-											<textarea type="text" rows="3" name="reponsavel" class="form-control" readonly></textarea>
+											<textarea type="text" rows="3" name="reponsavel" class="form-control"
+												readonly></textarea>
+										</td>
+										<td class="col-sm-2">
+											<label>Data:</label>
+											<input type="text" rows="3" name="txt_dataInclusao" class="form-control"
+												readonly></textarea>
 										</td>
 										<td class="col-sm-8">
 											<label>Devolutiva:</label>
@@ -180,7 +208,7 @@
 			<div class="panel-collapse collapse in">
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-3">
 							<label class='required'>Devolutivas foram aceitas?</label>
 							<div class="radio-options">
 								<div class="radio">
@@ -189,6 +217,13 @@
 								<div class="radio">
 									<label><input type="radio" name="rdAbrirDevolutiva" value="nao">Não</label>
 								</div>
+							</div>
+						</div>
+						<div class="col-sm-9">
+							<div class='form-input'>
+								<label>Justificativa</label>
+								<textarea class="form-control" rows="3" name="atxt_validarDevolutivas" placeholder=""
+									data-size="big"></textarea>
 							</div>
 						</div>
 					</div>

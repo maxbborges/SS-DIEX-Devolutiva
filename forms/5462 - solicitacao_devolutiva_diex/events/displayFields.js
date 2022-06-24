@@ -20,10 +20,10 @@ function displayFields(form, customHTML) {
 		form.setValue('ipCadastro',dia+'/'+mes+'/'+data.getFullYear());
 		form.setValue('ipSituacao',"Novo");
 
-		form.setVisibleById('div_01', false);
-		form.setVisibleById('div_02', false);
-		form.setVisibleById('div_03', false);
-		form.setVisibleById('btn_incluir_01', false);
+		 form.setVisibleById('div_01', false);
+		 form.setVisibleById('div_02', false);
+		 form.setVisibleById('div_03', false);
+		 form.setVisibleById('btn_incluir_01', false);
     }
 
     if (atividade==ACTIVITY.GERENCIA){
@@ -35,18 +35,18 @@ function displayFields(form, customHTML) {
 		}
 		form.setVisibleById('div_02', false);
 		form.setVisibleById('div_03', false);
-    }
+    } else {
+		form.setVisibleById('btn_incluir_01', false);
+	}
 
     if (atividade==ACTIVITY.VALIDAR){
 		if (form_mode=='VIEW'){
 			form.setVisibleById('div_03', false);
 		}
 		form.setVisibleById('div_01', false);
-		form.setVisibleById('btn_incluir_01', false);
     }
 
     if (atividade==ACTIVITY.FIM){
 		form.setVisibleById('div_01', false);
-		form.setVisibleById('btn_incluir_01', false);
     }
 }
