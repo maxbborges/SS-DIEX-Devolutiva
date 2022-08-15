@@ -22,16 +22,25 @@ function init(){
 function carregaTabelas(ano,mes,dia){
     var dataFormatada = ano+'-'+mes+'-'+dia
     var dataFormatadaBR = dia+'/'+mes+'/'+ano
-    constraints = [ 
-        DatasetFactory.createConstraint("dtAbrirDevolutiva", dataFormatadaBR, dataFormatadaBR, ConstraintType.MUST)
-    ];
+    console.log(dataFormatadaBR)
+    constraints=[]
+    constraints.push(DatasetFactory.createConstraint("dtAbrirDevolutiva", dataFormatadaBR, dataFormatadaBR, ConstraintType.MUST))
+    constraints.push(DatasetFactory.createConstraint("ipSituacao", 'Finalizada', 'Finalizada', ConstraintType.MUST_NOT))
     let dataset = (DatasetFactory.getDataset("DSsolicitacao_devolutiva_diex", null, constraints, null)).values
     console.log(dataset)
+    if (dataset.length==0){
+        FLUIGC.toast({
+            title: '',
+            message: 'Nenhum dado encontrado para '+dataFormatadaBR,
+            type: 'danger'
+        });
+        throw "Modificar filtro"
+    }
     setTimeout(()=>{
         for(i=0;i<dataset.length;i++){
             wdkAddChild('tbDevolutivasDiarias')
             $('[name="column1_1___'+(i+1)+'"]').text(dataset[i].taAbrirDevolutiva)
-            $('[name="column2_1___'+(i+1)+'"]').text(dataFormatadaBR)
+            $('[name="column2_1___'+(i+1)+'"]').text(dataset[i].dtAbrirDevolutiva)
             
             $('#column4_1___'+(i+1)).text(dataset[i].ipSituacao)
             $('#column5_1___'+(i+1)).attr('onClick','window.open("https://fluighom.sestsenat.org.br/portal/p/1/ecmnavigation?app_ecm_navigation_doc='+dataset[i].documentid+'","_blank")')

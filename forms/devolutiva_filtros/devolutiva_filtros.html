@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
 	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
 	<script type="text/javascript" src="/webdesk/vcXMLRPC.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/webdesk/vcXMLRPC.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 	<link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/0.css' type='text/css' rel='stylesheet' />
 
@@ -46,21 +46,47 @@
 				<div class="panel-body">
 					<div class="row filtros">
 						<div class="col-sm-6 form-input">
-							<select class="form-control" name="filtroNomes">
-								<option value="">Selecione um nome</option>
+							<label for="zoom">Nome Colaborador</label>
+								<input type="zoom" class="form-control" name="filtroNomes" data-zoom="{
+									'displayKey':'fullName',
+									'datasetId':'fluig_consulta_usuariosDoGrupo',
+									'maximumSelectionLength':'1',
+									'placeholder':'Escolha o solicitante',
+									'filterValues':'cdGrupo,_DGEA',
+									'fields':[{
+										'field':'fullName',
+										'label':'Nome',
+										'standard':'true',
+										'visible':'true'
+									},{
+										'field':'email',
+										'label':'E-mail',
+										'visible':'true'
+									}]
+								}">
+								<input type="hidden" name="NomeSolicitante" id="NomeSolicitante">
+							<!-- <select class="form-control" name="filtroNomes">
+								<option value=""></option>
 								<option value="Maxwell Borges Bezerra">Maxwell Borges Bezerra</option>
-							</select>
+							</select> -->
 						</div>
-						<div class="col-sm-3 form-input">
-							<input type="text" name="filtroData" class="form-control" placeholder="Digite a data">
+						<div class="col-sm-2 form-input">
+							<label>Data fixa</label>
+							<input type="text" name="filtroData" class="form-control date" placeholder="Digite a data">
 						</div>
-						<div class="col-sm-3 form-input">
+						<div class="col-sm-2 form-input">
+							<label>Data limite</label>
+							<input type="text" name="filtroDataLimite" class="form-control date" placeholder="Data">
+						</div>
+						<div class="col-sm-2 form-input">
+							<label>Status</label>
 							<select class="form-control" name="filtroStatus">
-								<option value="">Selecione um status</option>
+								<option value=""></option>
 								<option value="Novo">Novo</option>
 								<option value="Aguardando Respostas">Aguardando Respostas</option>
 								<option value="Validar">Validar</option>
 								<option value="Finalizada">Finalizada</option>
+								<option value="nFinalizada" selected>Não Finalizada</option>
 							</select>
 						</div>
 					</div>

@@ -9,28 +9,21 @@
 	<script src="/resources/js/jquery/jquery-ui.min.js"></script>
 	<script src="/resources/js/mustache/mustache-min.js"></script>
 	<script src="/style-guide/js/fluig-style-guide.min.js"></script>
-
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js" charset="utf-8"></script>
 	<link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
 	<link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
 	<script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
 	<script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
 	<link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/0.css' type='text/css' rel='stylesheet' />
 	<link href='./custom/custom.css' type='text/css' rel='stylesheet' />
 	<script type="text/javascript" src="./custom/activities.js"></script>
 	<script type="text/javascript" src="./custom/custom.js"></script>
-
-
-
-	<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"
-		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script> -->
+	<script type="text/javascript" src="./custom/functionsCustom.js"></script>
+	<script type="text/javascript" src="./custom/jqueryMask.js"></script>
+    <script type="text/javascript" src="./custom/jqueryMaskMoneyMin.js"></script>
 </head>
 
 
@@ -41,8 +34,7 @@
 		<div class="form-group">
 			<table tablename="tbl_pessoas" class="table" name="tbl_pessoas" noaddbutton="true" nodeletebutton="true">
 				<thead>
-					<tr class="tableHeadRow">
-					</tr>
+					<tr class="tableHeadRow"></tr>
 				</thead>
 				<tbody>
 					<tr class="tableBodyRow form-input">
@@ -76,56 +68,14 @@
 						<div class="col-sm-9 form-group">
 							<label for="zoom" class='required'>Pesquise o(s) nome(s) do(s) usuário(s)
 								Responsável(is):</label>
-							<input type="zoom" class="form-control" name="zfAbrirDevolutiva" id='zfAbrirDevolutiva'
-								data-zoom="{
-									'displayKey':'fullName',
-									'datasetId':'fluig_consulta_usuariosDoGrupo',
-									'maximumSelectionLength':'10',
-									'placeholder':'Escolha o(s) usuário(s)',
-									'filterValues':'cdGrupo,_DGEA',
-									'fields':[{
-										'field':'fullName',
-										'label':'Nome',
-										'standard':'true',
-										'visible':'true'
-									},{
-										'field':'email',
-										'label':'E-mail',
-										'visible':'true'
-									},{
-										'field':'code',
-										'label':'codigo',
-										'visible':'false'
-									}]
-								}">
-								<!-- 'displayKey':'colleagueName',
-									'datasetId':'colleague',
-									'maximumSelectionLength':'10',
-									'placeholder':'Escolha o(s) usuário(s)',
-									'fields':[{
-										'field':'colleagueName',
-										'label':'Nome',
-										'standard':'true'
-									},
-									{
-										'field':'colleagueId',
-										'label':'ID'
-									}] -->
-							<!-- <input type="hidden" name="hidden_zfAbrirDevolutiva" id="hidden_zfAbrirDevolutiva"> -->
-
+							<input type="zoom" class="form-control" name="zfAbrirDevolutiva" id='zfAbrirDevolutiva'>
 						</div>
 						<div class="col-sm-3">
 							<label>Prazo</label>
-							<input id="dtAbrirDevolutiva" type="text" class="form-control" name="dtAbrirDevolutiva"
-								id="dtAbrirDevolutiva" data-date="">
+							<input type="text" class="form-control date" name="dtAbrirDevolutiva"
+								id="dtAbrirDevolutiva">
 						</div>
 					</div>
-					<!-- <div class="row">
-						<div class="col-sm-12 form-input">
-							<input type="text" class="form-control" name="usuarios_selecionados"
-								id='usuarios_selecionados' readonly>
-						</div>
-					</div> -->
 					<div class="row form-group">
 						<div class="col-sm-12">
 							<label class='required'>Assunto</label>
@@ -150,12 +100,12 @@
 							<textarea class="form-control" rows="3" name="taDevolutiva" data-size="big"></textarea>
 						</div>
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-sm-12 btn_incluir_01">
 							<button type="button" class="btn btn-secundary" id="btn_incluir_01"
 								onclick="addItemTabela()">Incluir</button>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -183,7 +133,7 @@
 										</td>
 										<td class="col-sm-2">
 											<label>Data:</label>
-											<input type="text" rows="3" name="txt_dataInclusao" class="form-control"
+											<input type="text" name="txt_dataInclusao" class="form-control date"
 												readonly></textarea>
 										</td>
 										<td class="col-sm-8">
@@ -208,8 +158,8 @@
 			<div class="panel-collapse collapse in">
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-sm-3">
-							<label class='required'>Devolutivas foram aceitas?</label>
+						<div class="col-sm-2">
+							<label class='required'>Devolutivas aceitas?</label>
 							<div class="radio-options">
 								<div class="radio">
 									<label><input type="radio" name="rdAbrirDevolutiva" value="sim">Sim</label>
@@ -219,11 +169,18 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-9">
+						<div class="col-sm-4 form-group divZfNovosGerentes">
+							<label for="zoom" class='required'>Pesquise Responsável(is):</label>
+							<input type="zoom" class="form-control" name="zfNovosGerentes" id='zfNovosGerentes'>
+						</div>
+						<div class="col-sm-2 divDtNovoPrazo">
+							<label class='required'>Prazo</label>
+							<input type="text" class="form-control date" name="dtNovoPrazo" data-date="">
+						</div>
+						<div class="col-sm-4">
 							<div class='form-input'>
 								<label>Justificativa</label>
-								<textarea class="form-control" rows="3" name="atxt_validarDevolutivas" placeholder=""
-									data-size="big"></textarea>
+								<textarea class="form-control" rows="3" name="atxt_validarDevolutivas"></textarea>
 							</div>
 						</div>
 					</div>

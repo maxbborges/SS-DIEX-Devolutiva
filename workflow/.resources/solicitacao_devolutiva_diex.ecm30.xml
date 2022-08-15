@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>solicitacao_devolutiva_diex</processId>
-      <version>54</version>
+      <version>58</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5462</formId>
@@ -304,7 +304,7 @@
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>1</expressionOrder>
-        <version>54</version>
+        <version>58</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -316,7 +316,7 @@
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>2</expressionOrder>
-        <version>54</version>
+        <version>58</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -330,7 +330,7 @@
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>1</expressionOrder>
-        <version>54</version>
+        <version>58</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;hidden_proximo_usuario&quot;) == &quot;&quot;</condition>
@@ -343,7 +343,7 @@
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
         <expressionOrder>2</expressionOrder>
-        <version>54</version>
+        <version>58</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -494,6 +494,7 @@
       </workflowProcessEventPK>
       <eventDescription>function beforeTaskComplete(colleagueId,nextSequenceId,userList){&#xd;
 	log.info(&quot;## PROCESSO DEVOLUTIVA BTC ##&quot;)&#xd;
+	&#xd;
 &#xd;
 	if (nextSequenceId==6){&#xd;
 		hAPI.setCardValue(&quot;current_user_name&quot;, &apos;&apos;)&#xd;
@@ -505,6 +506,24 @@
 	}&#xd;
 &#xd;
 	if (nextSequenceId==4){&#xd;
+		var dataLimite = hAPI.getCardValue(&quot;dtAbrirDevolutiva&quot;)&#xd;
+		var arrayPrazoConclusao = dataLimite.split(&quot;/&quot;);&#xd;
+		var dia = arrayPrazoConclusao[0]; // Posição 0 do array é o dia&#xd;
+		var mes = arrayPrazoConclusao[1] - 1; // Posição 1 do array é o mês (Subtraímos 1 porque na data do Javascript o mês vai de 0 a 11)&#xd;
+		var ano = arrayPrazoConclusao[2]; // Posição 2 do array é o ano&#xd;
+		var dataDoPrazo = new Date();&#xd;
+		var threadDaSolicitacao = 0;&#xd;
+		var numeroDaSolicitacao = getValue(&apos;WKNumProces&apos;);&#xd;
+		var responsavelPelaTarefa = hAPI.getCardValue(&quot;hidden_proximo_usuario&quot;);&#xd;
+		&#xd;
+		dataDoPrazo.setDate(dia);&#xd;
+		dataDoPrazo.setMonth(mes);&#xd;
+		dataDoPrazo.setFullYear(ano);&#xd;
+		&#xd;
+		var horaDoPrazo = (24*60*60) - 1;&#xd;
+		&#xd;
+		hAPI.setDueDate(numeroDaSolicitacao, threadDaSolicitacao, responsavelPelaTarefa, dataDoPrazo, horaDoPrazo);&#xd;
+		&#xd;
 		hAPI.setCardValue(&quot;ipSituacao&quot;, &apos;Aguardando Respostas&apos;)&#xd;
 	}&#xd;
 &#xd;
@@ -529,6 +548,44 @@
     }&#xd;
 &#xd;
     log.info(&quot;## FIM PROCESSO DEVOLUTIVA BTS ##&quot;)&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>solicitacao_devolutiva_diex</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId){&#xd;
+	log.info(&quot;## PROCESSO DEVOLUTIVA ATC ##&quot;)&#xd;
+	&#xd;
+	var atividade = getValue(&apos;WKCurrentState&apos;);&#xd;
+	log.info(&quot;Atividade: &quot;+ atividade)&#xd;
+	&#xd;
+	if (atividade == 4){&#xd;
+		if (hAPI.getCardValue(&quot;rdAbrirDevolutiva&quot;)==&apos;nao&apos;){&#xd;
+			var arrayPrazoConclusao = (hAPI.getCardValue(&quot;dtNovoPrazo&quot;)).split(&quot;/&quot;);&#xd;
+		} else {&#xd;
+			var arrayPrazoConclusao = (hAPI.getCardValue(&quot;dtAbrirDevolutiva&quot;)).split(&quot;/&quot;);&#xd;
+		}&#xd;
+		&#xd;
+		var dia = arrayPrazoConclusao[0]; // Posição 0 do array é o dia&#xd;
+		var mes = arrayPrazoConclusao[1] - 1; // Posição 1 do array é o mês (Subtraímos 1 porque na data do Javascript o mês vai de 0 a 11)&#xd;
+		var ano = arrayPrazoConclusao[2]; // Posição 2 do array é o ano&#xd;
+&#xd;
+		var threadDaSolicitacao = 0;&#xd;
+		var numeroDaSolicitacao = getValue(&apos;WKNumProces&apos;);&#xd;
+		var responsavelPelaTarefa = colleagueId&#xd;
+		var horaDoPrazo = (24*60*60) - 1;&#xd;
+		&#xd;
+		var dataDoPrazo = new Date();&#xd;
+		dataDoPrazo.setDate(dia);&#xd;
+		dataDoPrazo.setMonth(mes);&#xd;
+		dataDoPrazo.setFullYear(ano);&#xd;
+		&#xd;
+		hAPI.setDueDate(numeroDaSolicitacao, threadDaSolicitacao, responsavelPelaTarefa, dataDoPrazo, horaDoPrazo);&#xd;
+	}&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -574,7 +631,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
-        <version>54</version>
+        <version>58</version>
         <linkSequence>12</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -585,7 +642,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
-        <version>54</version>
+        <version>58</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -596,7 +653,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solicitacao_devolutiva_diex</processId>
-        <version>54</version>
+        <version>58</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

@@ -30,7 +30,8 @@ var DIV_02=[
     // TABELA DEVOLUTIVAS
 ]
 
-var DIV_03=[
-    "rdAbrirDevolutiva",
-    "atxt_validarDevolutivas"
-]
+// var DIV_03=[
+//     "rdAbrirDevolutiva",
+//     "atxt_validarDevolutivas",
+//     "dtNovoPrazo"
+// ]
