@@ -2,12 +2,12 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>solicitacao_devolutiva_diex</processId>
+      <processId>SolicitacaoDeDevolutiva</processId>
     </processDefinitionPK>
-    <processDescription>solicitacao_devolutiva_diex</processDescription>
+    <processDescription>Solcitação de Devolutiva</processDescription>
     <instruction></instruction>
     <active>true</active>
-    <publicProcess>false</publicProcess>
+    <publicProcess>true</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>DIEX</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
@@ -27,11 +27,11 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>solicitacao_devolutiva_diex</processId>
-      <version>58</version>
+      <processId>Solcitação de Devolutiva</processId>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>5462</formId>
+    <formId>11802</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -49,7 +49,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>3</sequence>
       </processStatePK>
@@ -99,7 +99,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -151,7 +151,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>6</sequence>
       </processStatePK>
@@ -203,7 +203,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>8</sequence>
       </processStatePK>
@@ -228,7 +228,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>15</sequence>
       </processStatePK>
@@ -253,7 +253,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>13</sequence>
       </processStatePK>
@@ -302,9 +302,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <expressionOrder>1</expressionOrder>
-        <version>58</version>
+        <version>1</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -314,9 +314,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <expressionOrder>2</expressionOrder>
-        <version>58</version>
+        <version>1</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -328,9 +328,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <expressionOrder>1</expressionOrder>
-        <version>58</version>
+        <version>1</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;hidden_proximo_usuario&quot;) == &quot;&quot;</condition>
@@ -341,9 +341,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <expressionOrder>2</expressionOrder>
-        <version>58</version>
+        <version>1</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -357,7 +357,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <linkSequence>5</linkSequence>
       </processLinkPK>
@@ -377,7 +377,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <linkSequence>11</linkSequence>
       </processLinkPK>
@@ -397,7 +397,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <linkSequence>12</linkSequence>
       </processLinkPK>
@@ -417,7 +417,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <linkSequence>14</linkSequence>
       </processLinkPK>
@@ -434,7 +434,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <linkSequence>16</linkSequence>
       </processLinkPK>
@@ -451,7 +451,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <linkSequence>17</linkSequence>
       </processLinkPK>
@@ -468,7 +468,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <linkSequence>18</linkSequence>
       </processLinkPK>
@@ -489,7 +489,7 @@
       <workflowProcessEventPK>
         <companyId>1</companyId>
         <eventId>beforeTaskComplete</eventId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeTaskComplete(colleagueId,nextSequenceId,userList){&#xd;
@@ -534,7 +534,7 @@
       <workflowProcessEventPK>
         <companyId>1</companyId>
         <eventId>beforeTaskSave</eventId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){&#xd;
@@ -554,7 +554,7 @@
       <workflowProcessEventPK>
         <companyId>1</companyId>
         <eventId>afterTaskCreate</eventId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function afterTaskCreate(colleagueId){&#xd;
@@ -602,7 +602,7 @@
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -618,7 +618,7 @@
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
+        <processId>SolicitacaoDeDevolutiva</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
@@ -630,8 +630,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
-        <version>58</version>
+        <processId>SolicitacaoDeDevolutiva</processId>
+        <version>1</version>
         <linkSequence>12</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -641,8 +641,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
-        <version>58</version>
+        <processId>SolicitacaoDeDevolutiva</processId>
+        <version>1</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -652,8 +652,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>solicitacao_devolutiva_diex</processId>
-        <version>58</version>
+        <processId>SolicitacaoDeDevolutiva</processId>
+        <version>1</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

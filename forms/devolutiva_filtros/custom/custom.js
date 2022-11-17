@@ -35,7 +35,7 @@ function carregaTabelas(){
 
     console.log(constraints)
 
-    let dataset = (DatasetFactory.getDataset("DSsolicitacao_devolutiva_diex", null, constraints, null)).values
+    let dataset = (DatasetFactory.getDataset("DSSolicitacaoDeDevolutiva", null, constraints, null)).values
 
     setTimeout(()=>{
         var linhasTabela = $('.table tbody tr');
